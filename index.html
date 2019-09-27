@@ -1,0 +1,434 @@
+<html>
+	<head>
+		<link href="main.css" rel="stylesheet">
+		<script src="https://willmurphy.co.uk/static/vendor/jquery/jquery.min.js"></script>
+		<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"> -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.8/css/mdb.min.css" rel="stylesheet">
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<link href="main.css" rel="stylesheet">
+		<script type="text/javascript" src="main.js"></script>
+		<script type="text/javascript" src="res/jszip.min.js"></script>
+		<script type="text/javascript" src="res/filesaver.min.js"></script>
+	</head>
+	<body onload="start()">
+
+		<div class="modal fade" id="building" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Building Package</h5>
+
+				</div>
+				<div class="modal-body">
+
+					<div class="text-center">
+						<div class="spinner-grow spinner-border-md text-primary" role="status">
+  						<span class="sr-only">Loading...</span>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		</div>
+
+		<div class="container-flex">
+			<div class="row">
+				<div class="col-2">
+					<div class="title">Willow Systems</div>
+					Pebble App Package Generator
+					<ul class="light-ul">
+						<li><a href="/pebble/"> Timeline Tester </a></li>
+						<li><a href="/pebble/pin-generator/"> IFTTT Proxy </a></li>
+						<li><a href="/pebble/timeline-tester/"> Pebble Directory </a></li>
+					</ul>
+				</div>
+				<div class="col-8">
+					<div class="container center"><br>
+						<h1> Create an app package </h1>
+					</div>
+					<br>
+					Before you start, make sure you have read <a href="https://developer.rebble.io/developer.pebble.com/guides/appstore-publishing/publishing-an-app/index.html"> the app publishing guidelines </a> and have all the necessary files ready.
+					When you are finished, this tool will generate a zip file, which you will then need to send to @joshua on <a href="http://discord.gg/aRUAYFN"> the rebble discord </a>
+					<br><br> For more information, see the <a href="https://github.com/pebble-dev/wiki/wiki/Preparing-a-new-app-for-the-Rebble-App-Store">rebble wiki page</a>
+
+					<!-- <h5 class="break"> New Pebble App </h5> -->
+					<div id="mainform" class="form break">
+
+						1. Base Information
+
+						<div class="md-form form-lg break-sm">
+  						<input type="text" id="i-appname" class="form-control form-control-lg" name="poop">
+  						<label for="i-appname">App Name*</label>
+							<small id="passwordHelpBlockMD" class="form-text text-muted">
+    					This will be the title in the appstore
+  						</small>
+						</div>
+
+						<div class="md-form form-sm">
+              <input type="text" id="i-weburl" class="form-control form-control-sm">
+              <label for="i-weburl">Website URL</label>
+            </div>
+
+						<div class="md-form form-sm">
+              <input type="text" id="i-sourceurl" class="form-control form-control-sm">
+              <label for="i-sourceurl">Source Code URL</label>
+            </div>
+
+						<div class="md-form form-sm">
+              <input type="text" id="i-supportemail" class="form-control form-control-sm">
+              <label for="i-supportemail">Support Email</label>
+            </div>
+
+						<div class="formlabel" id="watchapptype">App Type*:</div>
+						<div class="custom-control custom-radio m-l-s">
+							<input type="radio" class="custom-control-input rbtype" id="i-iswatchface" name="g-apptype" >
+							<label class="custom-control-label" for="i-iswatchface">Watchface</label>
+						</div>
+						<div class="custom-control custom-radio m-l-s">
+							<input type="radio" class="custom-control-input rbtype" id="i-iswatchapp" name="g-apptype"  >
+							<label class="custom-control-label" for="i-iswatchapp">Watch app</label>
+						</div>
+
+						<div id="watchapponly">
+
+							<div class="formlabel break-md" id="watchcat">Category:</div>
+							<div class="custom-control custom-radio m-l-s">
+								<input type="radio" class="custom-control-input rbcat" id="i-cat-daily" name="g-cat" value="daily">
+								<label class="custom-control-label" for="i-cat-daily">Daily</label>
+							</div>
+							<div class="custom-control custom-radio m-l-s">
+								<input type="radio" class="custom-control-input rbcat" id="i-cat-tools" name="g-cat" value="toolsAndUtilities">
+								<label class="custom-control-label" for="i-cat-tools">Tools & Utilities</label>
+							</div>
+							<div class="custom-control custom-radio m-l-s">
+								<input type="radio" class="custom-control-input rbcat" id="i-cat-notifications" name="g-cat" value="notifications">
+								<label class="custom-control-label" for="i-cat-notifications">Notifications</label>
+							</div>
+							<div class="custom-control custom-radio m-l-s">
+								<input type="radio" class="custom-control-input rbcat" id="i-cat-remotes" name="g-cat" value="remotes">
+								<label class="custom-control-label" for="i-cat-remotes">Remotes</label>
+							</div>
+							<div class="custom-control custom-radio m-l-s">
+								<input type="radio" class="custom-control-input rbcat" id="i-cat-health" name="g-cat" value="healthAndFitness">
+								<label class="custom-control-label" for="i-cat-health">Health & Fitness</label>
+							</div>
+							<div class="custom-control custom-radio m-l-s">
+								<input type="radio" class="custom-control-input rbcat" id="i-cat-games" name="g-cat" value="games">
+								<label class="custom-control-label" for="i-cat-games">Games</label>
+							</div>
+
+						</div>
+
+						<div class="break">2. App Descriptions</div>
+
+						<div class="md-form">
+  						<textarea id="i-appdesc" class="form-control md-textarea" length="120" rows="2"></textarea>
+  						<label for="i-appdesc">App Description*</label>
+						</div>
+						<div class="md-form">
+  						<textarea id="i-apprelnotes" class="form-control md-textarea" length="120" rows="2"></textarea>
+  						<label for="i-apprelnotes">Release Notes*</label>
+						</div>
+
+						<div class="break">3. Icons</div>
+						<br>
+
+
+
+								<div class="image-upload break-sm m-l-s">
+									<label for="i-icon-1-f">
+										<img  id="i-icon-1" class="screenshot il" src="img/il.png"/>
+									</label>
+
+									<input id="i-icon-1-f" type="file" onchange="readURL(this);"/>
+									<span class="m-l-s">Large Icon* - Displayed on all listings in the rebble appstore</span>
+								</div>
+
+								<div class="image-upload break-sm m-l-s" style="margin-left: 104px;">
+									<label for="i-icon-2-f">
+										<img id="i-icon-2" class="screenshot is" src="img/is.png"/>
+									</label>
+									<input id="i-icon-2-f" type="file" onchange="readURL(this);"/>
+									<span class="m-l-s">Small Icon* - Will be displayed on your pebble watchapp profile</span>
+								</div>
+
+						<div class="break">4. Screenshots <small class="text-muted">(must provide at least one)</small></div>
+
+						<div class="custom-control custom-switch break-sm">
+							<input type="checkbox" class="custom-control-input" id="i-sw-usesamescreenshots">
+							<label class="custom-control-label" for="i-sw-usesamescreenshots">Use different screenshots for each pebble platform</label>
+						</div>
+
+						<div id="scr-allsame">
+
+							<div class="container-flex">
+								<div class="row">
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-a-1-f">
+											<img  id="i-scr-a-1" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-a-1-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-a-2-f">
+											<img id="i-scr-a-2" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-a-2-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-a-3-f">
+											<img id="i-scr-a-3" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-a-3-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-a-4-f">
+											<img id="i-scr-a-4" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-a-4-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-a-5-f">
+											<img id="i-scr-a-5" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-a-5-f" type="file" onchange="readURL(this);"/>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div id="scr-diff" >
+
+							<strong>aplite:</strong>
+							<div class="container-flex">
+								<div class="row">
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-aplite-1-f">
+											<img id="i-scr-aplite-1" class="screenshot" src="img/add.png" />
+										</label>
+
+										<input id="i-scr-aplite-1-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-aplite-2-f">
+											<img id="i-scr-aplite-2" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-aplite-2-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-aplite-3-f">
+											<img id="i-scr-aplite-3" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-aplite-3-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-aplite-4-f">
+											<img id="i-scr-aplite-4" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-aplite-4-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-aplite-5-f">
+											<img id="i-scr-aplite-5" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-aplite-5-f" type="file" onchange="readURL(this);"/>
+									</div>
+								</div>
+							</div>
+
+							<div class="break-sm"><strong>basalt:</strong></div>
+							<div class="container-flex">
+								<div class="row">
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-basalt-1-f">
+											<img id="i-scr-basalt-1" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-basalt-1-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-basalt-2-f">
+											<img id="i-scr-basalt-2" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-basalt-2-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-basalt-3-f">
+											<img id="i-scr-basalt-3" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-basalt-3-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-basalt-4-f">
+											<img id="i-scr-basalt-4" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-basalt-4-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-basalt-5-f">
+											<img id="i-scr-basalt-5" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-basalt-5-f" type="file" onchange="readURL(this);"/>
+									</div>
+								</div>
+							</div>
+
+							<div class="break-sm"><strong>chalk:</strong></div>
+							<div class="container-flex">
+								<div class="row">
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-chalk-1-f">
+											<img id="i-scr-chalk-1" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-chalk-1-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-chalk-2-f">
+											<img id="i-scr-chalk-2" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-chalk-2-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-chalk-3-f">
+											<img id="i-scr-chalk-3" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-chalk-3-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-chalk-4-f">
+											<img id="i-scr-chalk-4" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-chalk-4-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-chalk-5-f">
+											<img id="i-scr-chalk-5" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-chalk-5-f" type="file" onchange="readURL(this);"/>
+									</div>
+								</div>
+							</div>
+
+							<div class="break-sm"><strong>diorite:</strong></div>
+							<div class="container-flex">
+								<div class="row">
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-diorite-1-f">
+											<img id="i-scr-diorite-1" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-diorite-1-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-diorite-2-f">
+											<img id="i-scr-diorite-2" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-diorite-2-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-diorite-3-f">
+											<img id="i-scr-diorite-3" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-diorite-3-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-diorite-4-f">
+											<img id="i-scr-diorite-4" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-diorite-4-f" type="file" onchange="readURL(this);"/>
+									</div>
+
+									<div class="image-upload break-sm m-l-s">
+										<label for="i-scr-diorite-5-f">
+											<img id="i-scr-diorite-5" class="screenshot" src="img/add.png"/>
+										</label>
+
+										<input id="i-scr-diorite-5-f" type="file" onchange="readURL(this);"/>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="break">5. Appstore Banner</div>
+							<div class="image-upload break-sm m-l-s">
+								<label for="i-ban-f">
+									<img  id="i-ban" class="screenshot il" src="img/banner.png"/>
+								</label>
+
+								<input id="i-ban-f" type="file" onchange="readURL(this);"/>
+							</div>
+
+						<div class="break">6. The .pbw</div>
+						<div class="input-group break-sm" style="width: 50%;">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="i-f-pbw-lbl">.pbw file</span>
+							</div>
+							<div class="custom-file">
+								<input type="file" class="custom-file-input" id="i-f-pbw"
+								aria-describedby="i-f-pbw-lbl" onchange="readPBW(this);">
+								<label class="custom-file-label" for="i-f-pbw">Nothing Selected</label>
+							</div>
+						</div>
+
+					</div>
+
+					<button class="btn btn-primary break-md" onclick="build()" id="buildbtn">Build zip package</button>
+
+					<br><br><br><br>
+
+				</div>
+				<div class="col-2">
+					&nbsp
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.8/js/mdb.min.js"></script>
+	</body>
+</html>
