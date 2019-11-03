@@ -7,7 +7,7 @@ It's a 'psuedo' dev portal because it does not allow direct upload of the app to
 
 ## Production
 
-The production deployment is live at [willow.systems/pebble/dev-portal](https://willow.systems/pebble/dev-portal/)
+The production deployment is live at [willow.systems/pebble/dev-portal/](https://willow.systems/pebble/dev-portal/)
 
 ## Instructions
 
