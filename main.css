@@ -1,38 +1,3 @@
-/* body {
-	font-family: "Roboto","sans-serif";
-}
-.center {
-	text-align: center;
-	}
-.smaller {
-	max-width: 70%;
-	text-align: left;
-	}
-small {
-	cursor: pointer;
-}
-.footer {
-	position: absolute;
-	bottom: 0;
-	height: 40px;
-	margin-top: 40px;
-	width: 100%;
-	text-align: center;
-}
-.spinner-border {
-	height: 1rem !important;
-	width: 1rem !important;
-}
-.error {
-	border: 1px solid red !important;
-}
-.btn-secondary {
-	background-color: rgb(170, 170, 170) !important;
-}
-.btn-fixed {
-	width: 20%;
-	margin-top: 20px;
-} */
 body {
 	font-family: "Roboto","sans-serif";
 	font-size: 18;
@@ -186,4 +151,58 @@ select {
 }
 .btn-danger {
 	background-color: darkred !important;
+}
+
+.coffee {
+   /* Chrome, Safari, Opera */
+  -webkit-animation: rainbow 10s infinite;
+
+  /* Internet Explorer */
+  -ms-animation: rainbow 10s infinite;
+
+  /* Standar Syntax */
+  animation: rainbow 10s infinite;
+}
+@-webkit-keyframes rainbow{
+  0%{color: orange;}
+  10%{color: purple;}
+        20%{color: red;}
+  30%{color: CadetBlue;}
+        40%{color: yellow;}
+  50%{color: coral;}
+        60%{color: green;}
+  70%{color: cyan;}
+  80%{color: DeepPink;}
+  90%{color: DodgerBlue;}
+        100%{color: orange;}
+}
+
+/* Internet Explorer */
+@-ms-keyframes rainbow{
+   0%{color: orange;}
+  10%{color: purple;}
+        20%{color: red;}
+  30%{color: CadetBlue;}
+        40%{color: yellow;}
+  50%{color: coral;}
+        60%{color: green;}
+  70%{color: cyan;}
+  80%{color: DeepPink;}
+  90%{color: DodgerBlue;}
+        100%{color: orange;}
+}
+
+/* Standar Syntax */
+@keyframes rainbow{
+    0%{color: orange;}
+  10%{color: purple;}
+        20%{color: red;}
+  30%{color: CadetBlue;}
+        40%{color: yellow;}
+  50%{color: coral;}
+        60%{color: green;}
+  70%{color: cyan;}
+  80%{color: DeepPink;}
+  90%{color: DodgerBlue;}
+        100%{color: orange;}
 }

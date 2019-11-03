@@ -162,16 +162,16 @@ function build() {
     app.releasenotes = $('#i-apprelnotes').val();
   }
 
-  if (images["i-icon-1"] == null || images["i-icon-1"] == "") {
-    buildError("Large icon is required", "i-icon-1");
+  if ((app.type == "watchapp") && (images["i-icon-1"] == null || images["i-icon-1"] == "")) {
+    buildError("Large icon is required for watchapp", "i-icon-1");
     return;
   } else {
     app.icons = {};
     app.icons.large = images["i-icon-1"];
   }
 
-  if (images["i-icon-2"] == null || images["i-icon-2"] == "") {
-    buildError("Small icon is required", "i-icon-2");
+  if ((app.type == "watchapp") && (images["i-icon-2"] == null || images["i-icon-2"] == "")) {
+    buildError("Small icon is required for watchapp", "i-icon-2");
     return;
   } else {
     app.icons.small = images["i-icon-2"];
@@ -305,8 +305,10 @@ function build() {
   }
 
   yaml = yaml + "category: " + app.category + "\n";
-  yaml = yaml + "large_icon: icons/Large.png\n"
-  yaml = yaml + "small_icon: icons/Small.png\n"
+  if (app.type == "watchface") {
+    yaml = yaml + "large_icon: icons/Large.png\n"
+    yaml = yaml + "small_icon: icons/Small.png\n"
+  }
   yaml = yaml + "title: " + app.title + "\n";
   yaml = yaml + "source: " + app.source + "\n";
   yaml = yaml + "type: " + app.type + "\n";
@@ -324,8 +326,13 @@ function build() {
   ban.file("Banner.png", app.header, {base64: true});
 
   var icon = zip.folder("icons");
-  icon.file("Large.png", app.icons.large, {base64: true});
-  icon.file("Small.png", app.icons.small, {base64: true});
+  if (app.icons.large != null && app.icons.large != "") {
+    icon.file("Large.png", app.icons.large, {base64: true});
+  }
+
+  if (app.icons.small != null && app.icons.small != "") {
+    icon.file("Small.png", app.icons.small, {base64: true});
+  }
 
   var img = zip.folder("screenshots");
 
