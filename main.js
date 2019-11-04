@@ -305,7 +305,7 @@ function build() {
   }
 
   yaml = yaml + "category: " + app.category + "\n";
-  if (app.type == "watchface") {
+  if (app.type == "watchapp") {
     yaml = yaml + "large_icon: icons/Large.png\n"
     yaml = yaml + "small_icon: icons/Small.png\n"
   }
