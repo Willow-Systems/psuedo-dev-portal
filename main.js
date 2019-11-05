@@ -189,49 +189,47 @@ function build() {
 
     //Use different screenshots
 
+    var totalScreenshots = 0;
     //aplite
-    if (images["i-scr-aplite-1"] == null || images["i-scr-aplite-1"] == "") {
-      buildError("At least one screenshot is required for aplite", "i-scr-aplite-1");
-      return;
-    } else {
+    if (images["i-scr-aplite-1"] != null && images["i-scr-aplite-1"] != "") {
       for (i = 1; i < 6; i++) {
         if (images["i-scr-aplite-" + i] != null && images["i-scr-aplite-" + i] != "") {
           app.screenshots.aplite.push(images["i-scr-aplite-" + i]);
+          totalScreenshots += 1;
         }
       }
     }
     //basalt
-    if (images["i-scr-basalt-1"] == null || images["i-scr-basalt-1"] == "") {
-      buildError("At least one screenshot is required for basalt", "i-scr-basalt-1");
-      return;
-    } else {
+    if (images["i-scr-basalt-1"] != null && images["i-scr-basalt-1"] != "") {
       for (i = 1; i < 6; i++) {
         if (images["i-scr-basalt-" + i] != null && images["i-scr-basalt-" + i] != "") {
           app.screenshots.basalt.push(images["i-scr-basalt-" + i]);
+          totalScreenshots += 1;
         }
       }
     }
     //chalk
-    if (images["i-scr-chalk-1"] == null || images["i-scr-chalk-1"] == "") {
-      buildError("At least one screenshot is required for chalk", "i-scr-chalk-1");
-      return;
-    } else {
+    if (images["i-scr-chalk-1"] != null && images["i-scr-chalk-1"] != "") {
       for (i = 1; i < 6; i++) {
         if (images["i-scr-chalk-" + i] != null && images["i-scr-chalk-" + i] != "") {
           app.screenshots.chalk.push(images["i-scr-chalk-" + i]);
+          totalScreenshots += 1;
         }
       }
     }
     //diorite
-    if (images["i-scr-diorite-1"] == null || images["i-scr-diorite-1"] == "") {
-      buildError("At least one screenshot is required for diorite", "i-scr-diorite-1");
-      return;
-    } else {
+    if (images["i-scr-diorite-1"] != null && images["i-scr-diorite-1"] != "") {
       for (i = 1; i < 6; i++) {
         if (images["i-scr-diorite-" + i] != null && images["i-scr-diorite-" + i] != "") {
           app.screenshots.diorite.push(images["i-scr-diorite-" + i]);
+          totalScreenshots += 1;
         }
       }
+    }
+
+    if (totalScreenshots < 1) {
+      buildError("At least one screenshot must be provided");
+      return;
     }
 
   } else {
