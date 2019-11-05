@@ -125,6 +125,7 @@ select {
 	max-height: 168px;
 	max-width: 144px;
 	cursor: pointer;
+	object-fit: cover;
 }
 .il {
 	height: 144px;
