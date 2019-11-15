@@ -1,5 +1,5 @@
 images = {};
-appcat = "";
+appcat = "Faces";
 masterpbw = "";
 app = {};
 
