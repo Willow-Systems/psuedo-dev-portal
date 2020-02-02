@@ -275,8 +275,11 @@ function build() {
 
   yaml = yaml + "pbw_file: " + pbwfile + "\n"
   yaml = yaml + "header: banners/Banner.png\n"
+
+  app.description = "  " + app.description.replace(/\n/g,"\n  ");
   yaml = yaml + "description: |\n" + app.description + "\n"
-  yaml = yaml + "assets:\n"
+
+   yaml = yaml + "assets:\n"
   yaml = yaml + "-\n"
   yaml = yaml + "  name: aplite\n"
   yaml = yaml + "  screenshots:\n"
@@ -311,7 +314,8 @@ function build() {
   yaml = yaml + "source: " + app.source + "\n";
   yaml = yaml + "type: " + app.type + "\n";
   yaml = yaml + "website: " + app.website + "\n";
-  yaml = yaml + "release_notes: " + app.releasenotes + "\n";
+  app.releasenotes = "  " + app.releasenotes.replace(/\n/g,"\n  ");
+  yaml = yaml + "release_notes: |\n" + app.releasenotes + "\n";
 
   //yaml complete, build the .zip
 
