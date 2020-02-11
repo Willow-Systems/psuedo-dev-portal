@@ -1,5 +1,7 @@
 # Pebble Dev portal
 
+Note: There is a [new repo](https://github.com/Willow-Systems/rebble-dev-portal) for a rebble-styled version of this webapp. This will be deployed on rebble.io as the new dev portal, and will replace the willow.systems version
+
 ## Intro
 This project is for developers of apps or watchfaces for the pebble smartwatch who want to deploy their application to the [rebble appstore](https://apps.rebble.io). As per [this post](https://github.com/pebble-dev/wiki/wiki/Preparing-a-new-app-for-the-Rebble-App-Store), you can get your app on the appstore by creating a .zip with a yaml file and all the resources. This project provides a form which accepts your project resources and automatically creates the .yaml file, wrapping everything up in a nice .zip.   
 
